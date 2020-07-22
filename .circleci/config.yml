@@ -1,0 +1,72 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers-legacy
+        environment: 
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          DATABASE_URL: postgres://postgres:password@localhost:5432/newshy_test
+          RAILS_ENV: test
+      - image: circleci/postgres
+        environment:
+          POSTGRES_PASSWORD: password
+
+commands:
+  configure_bundle:
+    steps:
+      - run:
+          name: Configure Bundler
+          command: |
+            gem update --system
+            gem install bundler
+  bundle_with_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - newshy-bundle-{{ checksum "Gemfile.lock" }}
+            - newshy-bundle-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install --jobs=8 --clean
+      - save_cache:
+          key: newshy-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+  yarn_with_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - newshy-yarn-{{ checksum "yarn.lock" }}
+            - newshy-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: newshy-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - configure_bundle
+      - bundle_with_cache
+      - yarn_with_cache
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bin/rails db:create db:schema:load --trace
+      - run:
+          name: Run rspec
+          command: |
+            bundle exec rspec
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop --parallel
+
