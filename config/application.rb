@@ -22,7 +22,7 @@ module Newshy
       c.helper false
       c.test_frameword :rspec,
                        view_specs: false,
-                       helper_specs: false,
+                       helper_specs: false
     end
   end
 end

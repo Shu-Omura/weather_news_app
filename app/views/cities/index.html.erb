@@ -1,0 +1,5 @@
+<h2><%= @prefecture.name %></h2>
+<% @cities.each do |city| %>
+  <%= city.name %>
+  <%= city.location_id %>
+<% end %>

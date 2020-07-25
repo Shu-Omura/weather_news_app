@@ -6,9 +6,11 @@ CSV.foreach('db/csv/prefectures.csv') do |row|
   )
 end
 
-osaka = Prefecture.find_by(name: '大阪府')
-osaka.cities.create!(
-  name: '大阪',
-  romaji: 'Osaka',
-  location_id: 1853908,
-)
+CSV.foreach('db/csv/cities.csv') do |row|
+  pref = Prefecture.find_by(name: row[0])
+  pref.cities.create!(
+    name: row[1],
+    romaji: row[2].capitalize,
+    location_id: row[3],
+  )
+end
