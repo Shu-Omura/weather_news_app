@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_154903) do
+ActiveRecord::Schema.define(version: 2020_07_25_105010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_154903) do
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.string "romaji", null: false
-    t.integer "city_id", null: false
+    t.integer "location_id", null: false
     t.bigint "prefecture_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -31,5 +31,20 @@ ActiveRecord::Schema.define(version: 2020_07_24_154903) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "weather_forecasts", force: :cascade do |t|
+    t.integer "temp_max", null: false
+    t.integer "temp_min", null: false
+    t.integer "temp_feel"
+    t.integer "weather_id", null: false
+    t.integer "railfall"
+    t.datetime "date", null: false
+    t.datetime "aquired_at", null: false
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_weather_forecasts_on_city_id"
+  end
+
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "weather_forecasts", "cities"
 end
