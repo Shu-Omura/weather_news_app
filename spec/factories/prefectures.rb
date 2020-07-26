@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :prefecture do
-    name { "MyString" }
+    name { '大阪府' }
   end
 end

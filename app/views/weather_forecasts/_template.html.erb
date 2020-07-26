@@ -1,6 +1,6 @@
 <div class="forecast">
   <div class="forecast-head">
-    <span><%= weather_forecasts.take.date.strftime('%m月%d日') %>の天気</span>
+    <span><%= weather_forecasts.first.date.strftime('%m月%d日') %>の天気</span>
     <span class="max"><%= weather_forecasts.maximum(:temp_max).round %>℃</span>
     <span class="min"><%= weather_forecasts.minimum(:temp_min).round %>℃</span>
     <span>体感温度：<%= weather_forecasts.average(:temp_feel).round %>℃</span>
