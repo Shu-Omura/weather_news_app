@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      prefecture: 都道府県
+      city: 都市
+      weather_forecast: 天気予報
+    attributes:
+      prefecture:
+        name: 都道府県名
+      city:
+        name: 都市名
+        romaji: ローマ字
+        location_id: ロケーションID
+      weather_forecast:
+        temp_max: 最高気温
+        temp_min: 最低気温
+        temp_feel: 体感気温
+        rainfall: 降水量
+        weather_id: 天気ID
+        date: 日時
+        aquired_at: 取得日時

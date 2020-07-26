@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'httpclient', '~> 2.8', '>= 2.8.3'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'rails-i18n', '~> 6.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
