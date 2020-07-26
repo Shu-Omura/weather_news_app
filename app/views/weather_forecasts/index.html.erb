@@ -1,4 +1,6 @@
 <h2><%= @city.name %></h2>
 
-<%= render 'template', weather_forecasts: @weather_forecasts.today %>
-<%= render 'template', weather_forecasts: @weather_forecasts.tomorrow %>
+<div class="col-md-10 col-md-offset-1">
+  <%= render 'template', weather_forecasts: @weather_forecasts.today %>
+  <%= render 'template', weather_forecasts: @weather_forecasts.tomorrow %>
+</div>
