@@ -11,3 +11,7 @@ AllCops:
 
 Metrics/LineLength:
   Max: 120
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'lib/tasks/open_weather_api.rake'

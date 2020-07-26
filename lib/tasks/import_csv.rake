@@ -6,8 +6,8 @@ namespace :import_csv do
     list = []
     CSV.foreach('db/csv/prefectures.csv') do |row|
       list << {
-        name: row[1]
-    }
+        name: row[1],
+      }
     end
 
     puts 'start creating prefectures'
@@ -15,7 +15,7 @@ namespace :import_csv do
       Prefecture.create!(list)
       puts 'completed!'
     rescue ActiveModel::UnknownAttributeError
-      puts 'raised error: unknown attributes'      
+      puts 'raised error: unknown attributes'
     end
   end
 
@@ -37,7 +37,7 @@ namespace :import_csv do
       prefs.each_with_index { |pref, i| pref.cities.create!(list[i]) }
       puts 'completed!'
     rescue ActiveModel::UnknownAttributeError
-      puts 'raised error: unknown attributes'      
+      puts 'raised error: unknown attributes'
     end
   end
 end
