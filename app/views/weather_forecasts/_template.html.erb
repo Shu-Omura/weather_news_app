@@ -1,0 +1,35 @@
+最高気温：<%= weather_forecasts.maximum(:temp_max) %>
+最低気温：<%= weather_forecasts.minimum(:temp_min) %>
+体感温度：<%= weather_forecasts.average(:temp_feel) %>
+
+<table>
+  <thead>
+    <th>時間</th>
+    <th>0-3</th>
+    <th>3-6</th>
+    <th>6-9</th>
+    <th>9-12</th>
+    <th>12-15</th>
+    <th>15-18</th>
+    <th>18-21</th>
+    <th>21-24</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <% weather_forecasts.each do |forecast| %>
+        <% if forecast.daytime? %>
+          <td><%= image_tag "#{forecast.weather_condition}d.png" %></td>
+        <% else %>
+          <td><%= image_tag "#{forecast.weather_condition}n.png" %></td>
+        <% end %>
+      <% end %>
+    </tr>
+    <tr>
+      <td>気温</td>
+      <% weather_forecasts.each do |forecast| %>
+        <td><%= forecast.temp_avg.round %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

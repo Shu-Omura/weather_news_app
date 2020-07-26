@@ -17,5 +17,6 @@ namespace :open_weather_api do
         end
       end
     end
+    puts 'completed!'
   end
 end
