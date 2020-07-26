@@ -1,41 +1,45 @@
-最高気温：<%= weather_forecasts.maximum(:temp_max) %>
-最低気温：<%= weather_forecasts.minimum(:temp_min) %>
-体感温度：<%= weather_forecasts.average(:temp_feel) %>
-
-<table>
-  <thead>
-    <th>時間</th>
-    <th>0-3</th>
-    <th>3-6</th>
-    <th>6-9</th>
-    <th>9-12</th>
-    <th>12-15</th>
-    <th>15-18</th>
-    <th>18-21</th>
-    <th>21-24</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <% weather_forecasts.each do |forecast| %>
-        <% if forecast.daytime? %>
-          <td><%= image_tag "#{forecast.weather_condition}d.png" %></td>
-        <% else %>
-          <td><%= image_tag "#{forecast.weather_condition}n.png" %></td>
+<div class="forecast">
+  <div class="forecast-head">
+    <span><%= weather_forecasts.take.date.strftime('%m月%d日') %>の天気</span>
+    <span class="max"><%= weather_forecasts.maximum(:temp_max).round %>℃</span>
+    <span class="min"><%= weather_forecasts.minimum(:temp_min).round %>℃</span>
+    <span>体感温度：<%= weather_forecasts.average(:temp_feel).round %>℃</span>
+  </div>
+  <table>
+    <thead>
+      <th>時間</th>
+      <th>0-3</th>
+      <th>3-6</th>
+      <th>6-9</th>
+      <th>9-12</th>
+      <th>12-15</th>
+      <th>15-18</th>
+      <th>18-21</th>
+      <th>21-24</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <% weather_forecasts.each do |forecast| %>
+          <% if forecast.daytime? %>
+            <td><%= image_tag "#{forecast.weather_condition}d.png" %></td>
+          <% else %>
+            <td><%= image_tag "#{forecast.weather_condition}n.png" %></td>
+          <% end %>
         <% end %>
-      <% end %>
-    </tr>
-    <tr>
-      <td>気温</td>
-      <% weather_forecasts.each do |forecast| %>
-        <td><%= forecast.temp_avg.round(1) %></td>
-      <% end %>
-    </tr>
-    <tr>
-      <td>降水量/h</td>
-      <% weather_forecasts.each do |forecast| %>
-        <td><%= forecast.rainfall_avg.round(1) %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+      </tr>
+      <tr>
+        <td>気温</td>
+        <% weather_forecasts.each do |forecast| %>
+          <td><%= forecast.temp_avg.round(1) %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>降水/h</td>
+        <% weather_forecasts.each do |forecast| %>
+          <td><%= forecast.rainfall ? forecast.rainfall_avg.round(1) : '-' %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
