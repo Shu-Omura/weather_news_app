@@ -6,6 +6,6 @@
 <h4>今日の最高気温：<%= @response['list'][0]['main']['temp_max'] %></h4>
 <h4>今日の最低気温：<%= @response['list'][0]['main']['temp_min'] %></h4>
 <h4>今日の体感温度：<%= @response['list'][0]['main']['feels_like'] %></h4>
-<h4>天気ID：<%#= @response['list'][0]['weather']['id'].to_i %></h4>
+<h4>天気ID：<%#= @response['list'][0]['weather'][0]['id'] %></h4>
 <h4>3時間の降水量：<%#= @response['list'][0]['rain']['3h'] %></h4>
 <h4>日時：<%= @response['list'][0]['dt_txt'] %></h4>

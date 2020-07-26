@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_105010) do
+ActiveRecord::Schema.define(version: 2020_07_26_083641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,13 +32,12 @@ ActiveRecord::Schema.define(version: 2020_07_25_105010) do
   end
 
   create_table "weather_forecasts", force: :cascade do |t|
-    t.integer "temp_max", null: false
-    t.integer "temp_min", null: false
-    t.integer "temp_feel"
+    t.float "temp_max", null: false
+    t.float "temp_min", null: false
+    t.float "temp_feel"
     t.integer "weather_id", null: false
-    t.integer "railfall"
+    t.float "rainfall"
     t.datetime "date", null: false
-    t.datetime "aquired_at", null: false
     t.bigint "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
