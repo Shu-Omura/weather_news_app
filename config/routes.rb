@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :prefectures, only: [:index] do
-    resources :cities, only: [:index]
+  resources :prefectures, only: [:index], shallow: true do
+    resources :cities, only: [:index] do
+      resources :weather_forecasts, only: [:index]
+    end
   end
-  resources :weather_forecasts, only: [:index]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

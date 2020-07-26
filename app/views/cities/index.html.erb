@@ -1,5 +1,5 @@
 <h2><%= @prefecture.name %></h2>
 <% @cities.each do |city| %>
-  <%= city.name %>
+  <%= link_to city.name, city_weather_forecasts_path(city) %>
   <%= city.location_id %>
 <% end %>
