@@ -8,11 +8,13 @@ RSpec.describe Prefecture, type: :model do
 
     context 'with name' do
       let(:name) { '大阪府' }
+
       it { is_expected.to be_valid }
     end
 
     context 'without name' do
       let(:name) { nil }
+
       it { is_expected.not_to be_valid }
     end
   end
