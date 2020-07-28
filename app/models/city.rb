@@ -1,7 +1,5 @@
 class City < ApplicationRecord
   belongs_to :prefecture
   has_many :weather_forecasts, dependent: :destroy
-  validates :name, presence: true
-  validates :romaji, presence: true
-  validates :location_id, presence: true
+  validates_presence_of :name, :romaji, :location_id
 end

@@ -7,6 +7,7 @@ FactoryBot.define do
     rainfall { 1 }
     date { Time.current }
     aquired_at { Time.current }
+    city
 
     trait :tomorrow do
       date { Time.current.tomorrow }

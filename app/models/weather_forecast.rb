@@ -1,5 +1,6 @@
 class WeatherForecast < ApplicationRecord
   belongs_to :city
+  validates_presence_of :temp_max, :temp_min, :weather_id, :date, :aquired_at
 
   scope :today, -> { where(date: Date.current.all_day).order(date: :desc) }
   scope :tomorrow, -> { where(date: Date.current.tomorrow.all_day).order(date: :desc) }
