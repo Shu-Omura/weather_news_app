@@ -22,7 +22,7 @@ table {
 }
 
 .forecast {
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 15px;
   box-shadow: 2px 2px 8px gray;
   overflow: auto;
@@ -31,14 +31,33 @@ table {
     margin-bottom: 8px;
     border-bottom: 2px solid rgb(170, 170, 170);
     font-size: 16px;
+    .date {
+      font-size: 20px;
+    }
     .max {
-      padding: 0 5px;
-      font-size: 24px;
+      padding-left: 10px;
       color: red;
     }
     .min {
-      padding: 0 5px;
-      font-size: 24px;
+      color: blue;
+    }
+    .feels {
+      float: right;
+    }
+  }
+}
+
+.statistics {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  box-shadow: 2px 2px 8px gray;
+  .statistic {
+    text-align: center;
+    .max {
+      color: red;
+    }
+    .min {
       color: blue;
     }
   }

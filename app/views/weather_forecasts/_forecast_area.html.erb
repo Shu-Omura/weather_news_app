@@ -1,9 +1,9 @@
-<div class="forecast">
+<div class="row forecast">
   <div class="forecast-head">
-    <span><%= weather_forecasts.first.date.strftime('%m月%d日') %>の天気</span>
-    <span class="max"><%= weather_forecasts.maximum(:temp_max).round %>℃</span>
-    <span class="min"><%= weather_forecasts.minimum(:temp_min).round %>℃</span>
-    <span>体感温度：<%= weather_forecasts.average(:temp_feel).round %>℃</span>
+    <strong class="date"><%= weather_forecasts.first.date.strftime('%m月%d日') %>の天気</strong>
+    <strong class="max"><%= weather_forecasts.maximum(:temp_max).round %>℃</strong> / 
+    <strong class="min"><%= weather_forecasts.minimum(:temp_min).round %>℃</strong>
+    <span class="feels">体感温度：<%= weather_forecasts.average(:temp_feel).round %>℃</span>
   </div>
   <table>
     <thead>
@@ -42,4 +42,14 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="row statistics">
+  <% statistics.each do |statistic| %>
+    <div class="statistic">
+      <h4><%= statistic.date.strftime('%Y年') %></h4>
+      <h4><%= image_tag "#{statistic.weather_condition_d}.png" %><%= image_tag "#{statistic.weather_condition_n}.png" %></h4>
+      <h4><span class="max"><%= statistic.temp_max %>℃</span> / <span class="min"><%= statistic.temp_min %>℃</span></h4>
+    </div>
+  <% end %>
 </div>
