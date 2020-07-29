@@ -32,15 +32,15 @@ ActiveRecord::Schema.define(version: 2020_07_29_104452) do
   end
 
   create_table "statistics", force: :cascade do |t|
-    t.bigint "cities_id", null: false
-    t.integer "temp_max"
-    t.integer "temp_min"
+    t.bigint "city_id", null: false
+    t.float "temp_max"
+    t.float "temp_min"
     t.string "weather_d"
     t.string "weather_n"
     t.datetime "date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cities_id"], name: "index_statistics_on_cities_id"
+    t.index ["city_id"], name: "index_statistics_on_city_id"
   end
 
   create_table "weather_forecasts", force: :cascade do |t|
@@ -58,6 +58,6 @@ ActiveRecord::Schema.define(version: 2020_07_29_104452) do
   end
 
   add_foreign_key "cities", "prefectures"
-  add_foreign_key "statistics", "cities", column: "cities_id"
+  add_foreign_key "statistics", "cities"
   add_foreign_key "weather_forecasts", "cities"
 end
