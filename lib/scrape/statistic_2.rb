@@ -12,18 +12,19 @@ rows = [['さいたま', 43, '0363'], ['大津', 60, '0586']]
 rows.each do |row|
   2017.upto(2019) do |year|
     1.upto(12) do |month|
-      uri.query = { prec_no: row[1],
-                    block_no: row[2],
-                    year: year,
-                    month: month,
-                    view: 's1',
-                  }.to_query
+      uri.query = {
+        prec_no: row[1],
+        block_no: row[2],
+        year: year,
+        month: month,
+        view: 's1',
+      }.to_query
 
       html = open(uri.to_s) do |f|
         charset = f.charset
         f.read
       end
-  
+
       doc = Nokogiri::HTML.parse(html, nil, charset)
 
       doc.xpath('//tr[position()>3]').each_with_index do |node, index|
@@ -37,7 +38,7 @@ rows.each do |row|
         list_data.each do |data|
           csv << data
         end
-      end  
+      end
       sleep(10)
     end
   end

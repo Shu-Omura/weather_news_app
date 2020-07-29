@@ -2,6 +2,13 @@ body {
   padding-bottom: 25px;
 }
 
+h1 {
+  padding-bottom: 3px;
+  font-weight: bolder;
+  color: rgb(65, 65, 65);
+  border-bottom: 2px solid rgb(65, 65, 65);
+}
+
 header {
   background-color: #4885ed;
   li, ul, a {

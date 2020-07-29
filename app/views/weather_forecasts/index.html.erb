@@ -1,5 +1,5 @@
 <div class="col-md-10 col-md-offset-1">
-  <h2><%= @city.name %></h2>
+  <h1><%= @city.name %>の天気</h1>
   <%= render 'forecast_area', weather_forecasts: @weather_forecasts.today, statistics: @statistics.today %>
   <%= render 'forecast_area', weather_forecasts: @weather_forecasts.tomorrow, statistics: @statistics.tomorrow %>
 </div>
