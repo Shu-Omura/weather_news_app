@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :statistic do
-    cities { nil }
-    temp_max { 1 }
-    temp_min { 1 }
-    weather { "MyString" }
-    date { "2020-07-29 10:44:52" }
+    temp_max { 20 }
+    temp_min { 10 }
+    weather_d {  '晴れ' }
+    weather_n {  '晴れ' }
+    date { Date.today }
+    city
   end
 end
