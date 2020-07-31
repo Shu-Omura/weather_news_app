@@ -6,7 +6,7 @@ namespace :open_weather_api do
 
       # リクエスト上限：60回/min
       response = open_weather.request
-      
+
       # 3時間ごとのデータ2日分を保存
       16.times do |i|
         params = Api::OpenWeatherMap::Request.attributes_for(response['list'][i])

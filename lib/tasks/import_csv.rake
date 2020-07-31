@@ -8,7 +8,7 @@ namespace :import_csv do
     Rake::Task['import_csv:statistic'].execute
     Rake::Task['import_csv:statistic_2'].execute
   end
-  
+
   desc 'Import prefectures'
   task prefectures: :environment do
     list = []
