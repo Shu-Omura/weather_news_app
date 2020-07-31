@@ -1,6 +1,14 @@
 require 'csv'
 
 namespace :import_csv do
+  desc 'Import all csv'
+  task import_prefecture_city_statistic: :environment do
+    Rake::Task['import_csv:prefectures'].execute
+    Rake::Task['import_csv:cities'].execute
+    Rake::Task['import_csv:statistic'].execute
+    Rake::Task['import_csv:statistic_2'].execute
+  end
+  
   desc 'Import prefectures'
   task prefectures: :environment do
     list = []
@@ -18,7 +26,7 @@ namespace :import_csv do
   end
 
   desc 'Import cities'
-  task cities: [:environment, :prefectures] do
+  task cities: [:environment] do
     list = []
     prefs = []
     CSV.foreach('db/csv/cities.csv') do |row|
