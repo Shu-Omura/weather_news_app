@@ -1,3 +1,53 @@
-<% @prefectures.each do |pref| %>
-  <li><%= link_to pref.name, prefecture_cities_path(pref) %></li>
-<% end %>
+<div class="pref-area">
+  <ul>
+    <li>
+      <span id="hokkaido">北海道地方</span>
+      <%= link_to @prefectures[0].name, prefecture_cities_path(@prefectures[0]) %></li>
+    <li>
+      <span id="tohoku">東北地方</span>
+      <% @prefectures[1..6].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="kanto">関東地方</span>
+      <% @prefectures[7..13].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="chubu">中部地方</span>
+      <% @prefectures[14..22].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="kansai">関西地方</span>
+      <% @prefectures[23..29].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="chugoku">中国地方</span>
+      <% @prefectures[30..34].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="shikoku">四国地方</span>
+      <% @prefectures[35..38].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="kyushu">九州地方</span>
+      <% @prefectures[39..45].each do |pref| %>
+        <%= link_to pref.name, prefecture_cities_path(pref) %>
+      <% end %>
+    </li>
+    <li>
+      <span id="okinawa">沖縄地方</span>
+      <%= link_to @prefectures[46].name, prefecture_cities_path(@prefectures[46]) %>
+    </li>
+  </ul>
+</div>
