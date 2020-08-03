@@ -3,6 +3,7 @@
 全国各地の天気と、過去3年分の気象情報が一度にわかるお天気アプリ。
 
 # DEMO
+![demo_2](https://github.com/Shu-Omura/weather_news_app/blob/images/public/demo_3.png)
 ![demo](https://github.com/Shu-Omura/weather_news_app/blob/images/public/demo.png)
 
 # Features
