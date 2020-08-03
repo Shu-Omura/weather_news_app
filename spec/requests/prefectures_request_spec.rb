@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Prefectures', type: :request do
   let!(:prefecture) { create(:prefecture) }
 
+  before { create_list(:prefecture, 46) }
+
   describe 'GET #index' do
     before { get root_path }
 

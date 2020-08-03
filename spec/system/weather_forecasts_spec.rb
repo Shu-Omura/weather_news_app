@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'WeatherForecasts', type: :system do
-  let(:prefecture) { create(:prefecture) }
+  let(:prefecture) { create(:prefecture, name: '東京') }
   let(:city) { create(:city, prefecture: prefecture) }
   let!(:weather_forecast) { create(:weather_forecast, city: city) }
   let!(:weather_forecast_2) { create(:weather_forecast, :tomorrow, city: city) }
 
-  before { visit root_url }
+  before do
+    create_list(:prefecture, 46)
+    visit root_url
+  end
 
   it 'searchs weather_forecasts' do
     expect(page).to have_content prefecture.name

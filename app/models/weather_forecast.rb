@@ -4,6 +4,7 @@ class WeatherForecast < ApplicationRecord
 
   scope :today, -> { where(date: Date.current.all_day).order(date: :desc) }
   scope :tomorrow, -> { where(date: Date.current.tomorrow.all_day).order(date: :desc) }
+  scope :today_at_noon, -> { where(date: Date.today.since(12.hours)) }
 
   def weather_condition
     case weather_id

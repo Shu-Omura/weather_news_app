@@ -1,4 +1,6 @@
-<h2><%= @prefecture.name %></h2>
-<% @cities.each do |city| %>
-  <%= link_to city.name, city_weather_forecasts_path(city) %>
-<% end %>
+<div class="col-md-10 col-md-offset-1">
+  <h1><%= @prefecture.name %></h1>
+  <% @cities.each do |city| %>
+    <h3><%= link_to city.name, city_weather_forecasts_path(city) %></h3>
+  <% end %>
+</div>

@@ -18,6 +18,10 @@ header {
       background-color: #4885ed !important;;
     }
   }
+  .navbar-brand {
+    font-weight: bolder;
+    font-size: 24px;
+  }
 }
 
 .pref-area {
@@ -61,6 +65,79 @@ header {
     a {
       padding-right: 8px;
     }
+  }
+}
+
+.map-area {
+  position: relative;
+  margin-left: 250px;
+  .spot {
+    position: absolute;
+    text-align: center;
+    background-color: rgba(246,246,246,.7);
+    border: solid 1px #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(50,50,50,.25);
+    line-height: 1;
+    font-size: 14px;
+    a {
+    color: black;
+      &:hover{ 
+        text-decoration: none;
+      }
+    }
+    img {
+      width: 80px;
+      height: 80px;
+    }
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    &:hover {
+      background-color: rgba(230,230,230,.9);
+    }
+  }
+  .Sapporo {
+    top: 40px;
+    left: 430px;
+  }
+  .Sendai {
+    top: 230px;
+    left: 470px;
+  }
+  .Tokyo {
+    top: 360px;
+    left: 440px;
+  }
+  .Niigata {
+    top: 210px;
+    left: 360px;
+  }
+  .Kanazawa {
+    top: 250px;
+    left: 260px;
+  }
+  .Osaka {
+    top: 400px;
+    left: 310px;
+  }
+  .Hiroshima {
+    top: 320px;
+    left: 170px;
+  }
+  .Kochi {
+    top: 470px;
+    left: 200px;
+  }
+  .Fukuoka {
+    top: 400px;
+    left: 60px;
+  }
+  .Naha {
+    top: 500px;
+    left: 600px;
   }
 }
 
